@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohsen Tarek — Loading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E1B; --surface:#101729; --border:#1E2740;
+  --accent:#4F5BE8; --accent-soft:#7B89FF; --text:#E8EBF5; --text2:#9AA1B8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;
+  background:var(--bg); color:var(--text);
+  min-height:100vh; min-height:100dvh;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:''; position:fixed; top:50%; left:50%;
+  width:640px; height:640px; transform:translate(-50%,-50%);
+  background:radial-gradient(closest-side, rgba(79,91,232,.14), transparent 70%);
+  pointer-events:none;
+}
+.wrap{ text-align:center; padding:20px; position:relative; }
+.logo{ width:84px; height:84px; margin:0 auto 26px; position:relative; }
+.mark{ width:84px; height:84px; border-radius:22px; display:block; position:relative; z-index:2; }
+.ring{
+  position:absolute; inset:-6px; border-radius:26px;
+  border:1.5px solid rgba(123,137,255,.45);
+  animation:pulse 2.4s ease-out infinite;
+}
+.ring.r2{ animation-delay:1.2s; }
+@keyframes pulse{
+  0%{ transform:scale(.92); opacity:.8; }
+  70%,100%{ transform:scale(1.45); opacity:0; }
+}
+.brand{ font-size:30px; font-weight:700; letter-spacing:.5px; }
+.creator{
+  display:inline-flex; align-items:center; gap:9px;
+  margin-top:10px; font-size:14px; color:var(--text2); font-weight:500;
+}
+.creator .dot{
+  width:6px; height:6px; border-radius:50%;
+  background:var(--accent-soft); animation:blinkDot 1.6s ease infinite;
+}
+@keyframes blinkDot{ 0%,100%{opacity:.3} 50%{opacity:1} }
+.creator b{ color:var(--accent-soft); font-weight:600; }
+.tagline{ margin-top:18px; font-size:13.5px; color:var(--text2); }
+.bar{
+  width:220px; height:4px; margin:30px auto 0;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:99px; overflow:hidden; position:relative;
+}
+.bar::after{
+  content:''; position:absolute; inset-block:0; width:45%;
+  border-radius:99px; background:var(--accent-soft);
+  animation:slide 1.4s ease-in-out infinite;
+}
+@keyframes slide{ 0%{ right:-45%; } 100%{ right:100%; } }
+.status{ margin-top:16px; font-size:12.5px; color:var(--text2);
+  display:flex; align-items:center; justify-content:center; gap:8px; }
+.dots{ display:flex; gap:4px; }
+.dots i{ width:5px; height:5px; border-radius:50%; background:var(--text2); animation:bounce 1.2s ease infinite; }
+.dots i:nth-child(2){ animation-delay:.15s; }
+.dots i:nth-child(3){ animation-delay:.3s; }
+@keyframes bounce{ 0%,60%,100%{ transform:none; opacity:.4 } 30%{ transform:translateY(-4px); opacity:1 } }
+.foot{ margin-top:34px; font-size:11px; color:#5E6784; letter-spacing:.3px; }
+@media (prefers-reduced-motion:reduce){ *{ animation:none!important; } }
+</style>
+</head>
+<body>
+<main class="wrap" role="status" aria-live="polite">
+  <div class="logo">
+    <span class="ring"></span>
+    <span class="ring r2"></span>
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4F5BE8"/>
+          <stop offset="1" stop-color="#7C5CF0"/>
+        </linearGradient>
+      </defs>
+      <rect x="1" y="1" width="30" height="30" rx="9" fill="url(#g)"/>
+      <path d="M8.5 22.5v-13l7.5 7 7.5-7v13" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <h1 class="brand">Mohsen Tarek</h1>
+  <p class="creator">
+    <span class="dot"></span>
+    <span>مطوّر <b>Mohsen AI</b></span>
+  </p>
+
+  <p class="tagline">منصة ذكاء اصطناعي واحدة، لكل احتياجاتك.</p>
+
+  <div class="bar" aria-hidden="true"></div>
+  <p class="status">جاري التحميل
+    <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+  </p>
+
+  <p class="foot">One AI workspace. Every possibility.</p>
+</main>
+
+<script>
+  // ✅ طريقة مضمونة: ننتظر تحميل الصفحة بالكامل ثم نعمل التحويل
+  window.addEventListener('load', function(){
+    console.log('✅ Loading page ready');
+    setTimeout(function(){
+      console.log('➡️ Going to /index.html');
+      // حفظ إننا كملنا اللودنج
+      try { sessionStorage.setItem('mohsen_loading_shown', '1'); } catch(e){}
+      // استخدام replace عشان مايرجعش للودنج بالـ back button
+      window.location.replace('/index.html');
+    }, 2800);
+  });
+</script>
+</body>
+</html>

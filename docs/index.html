@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mohsen AI — منصة ذكاء اصطناعي واحدة، لكل احتياجاتك.</title>
+  <meta name="description" content="تحدث مع نماذج ذكاء اصطناعي متعددة من مكان واحد. Mohsen AI — مساحة عمل ذكاء اصطناعي مجانية.">
+  <meta name="theme-color" content="#0B0B14">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='9' fill='%237C3AED'/%3E%3Cpath d='M8.5 22.5v-13l7.5 7 7.5-7v13' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="js/boot.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+  (function(){
+    try {
+      var path = location.pathname;
+      var isHome = (path === '/' || path === '/index.html' || path === '' || /\/index\.html?$/.test(path));
+      var shown = sessionStorage.getItem('mohsen_loading_done');
+      if (isHome && !shown) {
+        sessionStorage.setItem('mohsen_loading_done', '1');
+        location.replace('/loading.html');
+      }
+    } catch(e){}
+  })();
+  </script>
+</head>
+<body data-page="landing">
+
+  <!-- ✨ Aurora background -->
+  <div class="aurora-bg" aria-hidden="true">
+    <span class="aurora-blob blob-1"></span>
+    <span class="aurora-blob blob-2"></span>
+    <span class="aurora-blob blob-3"></span>
+    <span class="aurora-grid"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="in">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+          <rect x="1" y="1" width="30" height="30" rx="9" fill="url(#logoGrad)"/>
+          <path d="M8.5 22.5v-13l7.5 7 7.5-7v13" fill="none" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7C3AED"/>
+              <stop offset="1" stop-color="#06B6D4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Mohsen AI</span>
+      </a>
+      <nav class="nav-links" aria-label="تنقل">
+        <a href="#features" data-i18n="nav_features"></a>
+        <a href="#models" data-i18n="nav_models"></a>
+        <a href="#about" data-i18n="nav_about"></a>
+      </nav>
+      <div class="header-tools">
+        <div class="lang-toggle" role="group" aria-label="اللغة">
+          <button data-lang="ar">العربية</button>
+          <button data-lang="en">English</button>
+        </div>
+        <button class="icon-btn" data-theme-cycle aria-label="المظهر"></button>
+        <a class="support-btn" href="/support.html" aria-label="الدعم الفني">
+          <span class="dot-live"></span>
+          <span>الدعم</span>
+        </a>
+        <a class="btn-primary" id="ctaStart" href="/chat.html" data-i18n="start_chat"></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="in">
+      <span class="hero-badge"><span data-icon="sparkles" data-icon-size="15"></span><span data-i18n="hero_badge"></span></span>
+      <h1><span data-i18n="tagline"></span></h1>
+      <p class="sub" data-i18n="tagline_desc"></p>
+      <div class="hero-cta">
+        <a class="btn-primary" id="ctaStart2" href="/chat.html" data-i18n="start_chat"></a>
+        <a class="btn-ghost" href="#models"><span data-icon="layers" data-icon-size="17"></span><span data-i18n="explore_models"></span></a>
+      </div>
+      <div class="preview-wrap">
+        <div class="preview" aria-hidden="true">
+          <div class="preview-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="pv-title"><span class="pv-badge" data-i18n="preview_badge"></span></span>
+          </div>
+          <div class="preview-body">
+            <div class="pv-msg pv-user" data-i18n="preview_user"></div>
+            <div class="pv-msg pv-ai">
+              <span data-i18n="preview_ai1"></span><br>
+              <span data-i18n="preview_ai2"></span> <span class="pv-caret"></span>
+              <div class="sk w1"></div><div class="sk w2"></div><div class="sk w3"></div>
+            </div>
+            <div class="pv-hint"><span data-icon="zap" data-icon-size="14"></span><span data-i18n="preview_hint"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="features">
+    <div class="sec-head">
+      <h2 data-i18n="why_title"></h2>
+    </div>
+    <div class="bento">
+      <article class="tile t-models">
+        <span class="tile-ic" data-icon="sparkles"></span>
+        <h3 data-i18n="feat_models_title"></h3>
+        <p data-i18n="feat_models_desc"></p>
+        <div class="chips" aria-hidden="true">
+          <span class="pchip"><span class="pdot" style="background:#4E7CF6"></span>Gemini</span>
+          <span class="pchip"><span class="pdot" style="background:#F0563A"></span>Groq</span>
+          <span class="pchip"><span class="pdot" style="background:#C2419B"></span>Z.ai / GLM</span>
+          <span class="pchip"><span class="pdot" style="background:#7C7CF0"></span>OpenRouter</span>
+          <span class="pchip"><span class="pdot" style="background:#E88A2D"></span>Cerebras</span>
+        </div>
+        <span class="art-hint"><span data-icon="check" data-icon-size="13"></span><span data-i18n="art_models_hint"></span></span>
+      </article>
+      <article class="tile t-speed">
+        <span class="tile-ic" data-icon="zap"></span>
+        <h3 data-i18n="feat_speed_title"></h3>
+        <p data-i18n="feat_speed_desc"></p>
+        <div class="lat" aria-hidden="true">
+          <div class="lat-row"><b>Groq</b><span class="lat-bar" style="width:38%"></span></div>
+          <div class="lat-row"><b>Cerebras</b><span class="lat-bar" style="width:52%"></span></div>
+          <div class="lat-row"><b>Gemini</b><span class="lat-bar" style="width:72%"></span></div>
+        </div>
+        <span class="art-hint"><span data-icon="check" data-icon-size="13"></span><span data-i18n="art_speed_hint"></span></span>
+      </article>
+      <article class="tile t-privacy">
+        <span class="tile-ic" data-icon="shield"></span>
+        <h3 data-i18n="feat_privacy_title"></h3>
+        <p data-i18n="feat_privacy_desc"></p>
+        <div class="keymap" aria-hidden="true">
+          <span class="km-node" data-icon="monitor"><span data-i18n="art_browser"></span></span>
+          <span class="km-arrow" data-icon="chevron" data-icon-size="15"></span>
+          <span class="km-node server" data-icon="key"><span data-i18n="art_server"></span></span>
+        </div>
+        <span class="art-hint"><span data-icon="check" data-icon-size="13"></span><span data-i18n="art_privacy_hint"></span></span>
+      </article>
+      <article class="tile t-free">
+        <span class="tile-ic" data-icon="info"></span>
+        <h3 data-i18n="feat_free_title"></h3>
+        <p data-i18n="feat_free_desc"></p>
+        <div class="quota" aria-hidden="true">
+          <div class="q-box"><b>20</b><span data-i18n="art_hour"></span></div>
+          <div class="q-box"><b>100</b><span data-i18n="art_day"></span></div>
+        </div>
+        <span class="art-hint"><span data-icon="check" data-icon-size="13"></span><span data-i18n="art_free_note"></span></span>
+      </article>
+      <article class="tile t-workspace">
+        <span class="tile-ic" data-icon="layers"></span>
+        <h3 data-i18n="feat_workspace_title"></h3>
+        <p data-i18n="feat_workspace_desc"></p>
+        <div class="wires" aria-hidden="true"><span class="wire"></span><span class="wire"></span><span class="wire"></span></div>
+        <span class="art-hint"><span data-icon="check" data-icon-size="13"></span><span data-i18n="art_workspace_hint"></span></span>
+      </article>
+      <article class="tile t-account">
+        <span class="tile-ic" data-icon="user"></span>
+        <div>
+          <h3 data-i18n="feat_account_title"></h3>
+          <p data-i18n="feat_account_desc"></p>
+          <span class="anon-chip" data-icon="user">anon_x7k2…9fm</span>
+        </div>
+        <a class="btn-primary" href="/chat.html" data-i18n="start_chat"></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="models">
+    <div class="sec-head">
+      <h2 data-i18n="models_sec_title"></h2>
+      <p data-i18n="models_sec_sub"></p>
+    </div>
+    <div class="models-table-wrap">
+      <table class="models">
+        <thead><tr>
+          <th data-i18n="th_provider"></th><th data-i18n="th_models"></th>
+          <th data-i18n="th_tier"></th><th data-i18n="th_context"></th>
+        </tr></thead>
+        <tbody id="modelsTbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ About / Developer ============ -->
+  <section class="sec about-sec" id="about">
+    <div class="about-card">
+      <div class="logo-lg">
+        <div class="m-logo lg" aria-hidden="true">M</div>
+      </div>
+      <h2 data-i18n="about_title"></h2>
+      <p data-i18n="about_p1"></p>
+      <p data-i18n="about_p2"></p>
+
+      <div class="dev-card">
+        <div class="m-logo" aria-hidden="true">M</div>
+        <div class="dev-info">
+          <h3 class="dev-name">محسن عبدالمنعم إبراهيم</h3>
+          <p class="dev-role">Frontend Engineer · UI/UX Designer</p>
+          <p class="dev-quote">"I don't just build websites — I design experiences that feel alive."</p>
+
+          <div class="dev-links">
+            <a class="dev-contact-btn call" href="tel:01096295395">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              01096295395
+            </a>
+            <a class="dev-contact-btn support" href="/support.html">
+              <span class="dot-live" style="width:7px;height:7px;border-radius:50%;background:#00FF88;box-shadow:0 0 10px #00FF88"></span>
+              الدعم الفني
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <p class="dev-line">تم التطوير بواسطة <b>محسن عبدالمنعم إبراهيم</b></p>
+    </div>
+  </section>
+
+  <footer class="site">
+    <span class="f-brand">Mohsen AI</span> ·
+    <span data-i18n="footer_note"></span> ·
+    <span class="f-dev">صنع بـ 💚 بواسطة <b>محسن عبدالمنعم إبراهيم</b></span>
+  </footer>
+
+  <div id="toastRoot" class="toast-root" role="status" aria-live="polite"></div>
+
+  <script src="js/i18n/ar.js"></script>
+  <script src="js/i18n/en.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/models.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+
+
+
+

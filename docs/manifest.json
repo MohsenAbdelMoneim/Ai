@@ -1,0 +1,15 @@
+{
+  "name": "Mohsen AI",
+  "short_name": "Mohsen AI",
+  "description": "منصة ذكاء اصطناعي واحدة، لكل احتياجاتك. One AI workspace. Every possibility.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/chat.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0E1B",
+  "theme_color": "#0A0E1B",
+  "icons": [
+    { "src": "/assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
