@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>محادثة جديدة — Mohsen AI</title>
+  <meta name="description" content="مساحة عمل Mohsen AI — محادثة مع نماذج ذكاء اصطناعي متعددة.">
+  <meta name="theme-color" content="#0B0B14">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='9' fill='%237C3AED'/%3E%3Cpath d='M8.5 22.5v-13l7.5 7 7.5-7v13' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="js/boot.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="chat">
+
+  <!-- ✨ Aurora background -->
+  <div class="aurora-bg" aria-hidden="true">
+    <span class="aurora-blob blob-1"></span>
+    <span class="aurora-blob blob-2"></span>
+    <span class="aurora-blob blob-3"></span>
+    <span class="aurora-grid"></span>
+  </div>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="الشريط الجانبي">
+      <div class="sb-head">
+        <a class="brand" href="/">
+          <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+            <rect x="1" y="1" width="30" height="30" rx="9" fill="url(#logoGradS)"/>
+            <path d="M8.5 22.5v-13l7.5 7 7.5-7v13" fill="none" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logoGradS" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7C3AED"/>
+                <stop offset="1" stop-color="#06B6D4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>Mohsen AI</span>
+        </a>
+        <button class="icon-btn only-mobile" id="sbClose" data-icon="x" data-i18n-aria="close"></button>
+      </div>
+      <button class="btn-primary w-full" id="newChatBtn">
+        <span data-icon="plus" data-icon-size="17"></span>
+        <span data-i18n="new_chat"></span>
+      </button>
+      <button class="btn-ghost w-full" id="searchBtn">
+        <span data-icon="search" data-icon-size="17"></span>
+        <span data-i18n="search"></span>
+        <kbd>Ctrl K</kbd>
+      </button>
+      <div class="sb-tabs" role="tablist">
+        <button role="tab" data-tab="convs" aria-selected="true" class="on" data-i18n="conversations"></button>
+        <button role="tab" data-tab="favs" aria-selected="false" data-i18n="favorites"></button>
+      </div>
+      <nav class="conv-list" id="convList" role="list"></nav>
+
+      <div class="sb-foot">
+        <div class="usage-mini" id="usageMini" hidden></div>
+
+        <button class="sb-link" id="settingsBtn">
+          <span data-icon="settings" data-icon-size="17"></span>
+          <span data-i18n="settings"></span>
+        </button>
+
+        <button class="sb-link" id="aboutBtn">
+          <span data-icon="info" data-icon-size="17"></span>
+          <span data-i18n="about_platform"></span>
+        </button>
+
+        <a class="sb-link sb-support" href="/support.html">
+          <span class="dot-live"></span>
+          <span>الدعم الفني</span>
+        </a>
+
+        <!-- بطاقة المطور -->
+        <div class="sb-dev-card">
+          <div class="m-logo" aria-hidden="true">M</div>
+          <div class="sb-dev-info">
+            <p class="sb-dev-name">محسن عبدالمنعم إبراهيم</p>
+            <p class="sb-dev-role">Frontend Engineer</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="scrim" id="scrim" hidden></div>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn only-mobile" id="menuBtn" data-icon="menu" data-i18n-aria="settings"></button>
+        <div class="top-title">
+          <h1 id="convTitle"></h1>
+          <span class="top-meta" id="convMeta"></span>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" id="topFavBtn" data-icon="star" data-i18n-aria="add_favorite"></button>
+          <button class="icon-btn" id="exportBtn" data-icon="download" data-i18n-aria="export_chat"></button>
+          <a class="support-btn" href="/support.html" aria-label="الدعم الفني">
+            <span class="dot-live"></span>
+            <span>الدعم</span>
+          </a>
+        </div>
+      </header>
+
+      <div class="messages" id="messages" role="log" aria-live="polite">
+        <div class="messages-inner" id="messagesInner"></div>
+      </div>
+
+      <div class="composer-wrap">
+        <div class="attach-bar" id="attachBar" hidden></div>
+        <form class="composer" id="composer">
+          <input type="file" id="fileInput" hidden multiple accept=".txt,.md,.csv,.log,.json,image/png,image/jpeg,image/webp">
+          <button type="button" class="icon-btn" id="attachBtn" data-icon="clip" data-i18n-aria="attach"></button>
+          <textarea id="input" rows="1" dir="auto" data-i18n-ph="placeholder"></textarea>
+          <button type="button" class="model-btn" id="webSearchBtn" data-icon="globe" hidden><span class="ws-label"></span></button>
+          <button type="button" class="model-btn" id="modelBtn"></button>
+          <button type="submit" class="send-btn" id="sendBtn" data-icon="arrow" data-i18n-aria="send"></button>
+          <button type="button" class="send-btn stop" id="stopBtn" data-icon="square" data-i18n-aria="stop_generating" hidden></button>
+        </form>
+        <div class="composer-foot">
+          <span class="len-counter" id="lenCounter" hidden></span>
+          <span data-i18n="feat_free_note"></span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot" class="toast-root" role="status" aria-live="polite"></div>
+
+  <script src="js/i18n/ar.js"></script>
+  <script src="js/i18n/en.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/markdown.js"></script>
+  <script src="js/models.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

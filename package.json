@@ -1,0 +1,17 @@
+{
+  "name": "mohsen-ai",
+  "version": "3.0.0",
+  "description": "Mohsen AI — One AI workspace. Every possibility. By Mohsen Tarek.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node --watch backend/server.js",
+    "setup": "node backend/setup.js",
+    "verify": "node backend/verify.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
